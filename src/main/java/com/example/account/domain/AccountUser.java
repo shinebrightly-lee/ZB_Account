@@ -1,6 +1,5 @@
 package com.example.account.domain;
 
-import com.example.account.type.*;
 import lombok.*;
 import org.springframework.data.annotation.*;
 import org.springframework.data.jpa.domain.support.*;
@@ -9,28 +8,17 @@ import javax.persistence.*;
 import javax.persistence.Id;
 import java.time.*;
 
-@Getter
-@Setter
-@NoArgsConstructor
+@Getter@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-public class Account {
+public class AccountUser {
     @Id
     @GeneratedValue
     private Long id;
-
-    @ManyToOne
-    private  AccountUser accountUser;
-    private String accountNumber;
-
-    @Enumerated(EnumType.STRING)
-    private AccountStatus accountStatus;
-    private  Long balance;
-
-    private LocalDateTime registeredAt;
-    private LocalDateTime unRegisteredAt;
+    private String name;
 
     @CreatedDate
     private LocalDateTime createdAt;
