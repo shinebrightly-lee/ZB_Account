@@ -1,5 +1,6 @@
 package com.example.account.domain;
 
+import com.example.account.exception.AccountException;
 import com.example.account.type.*;
 import lombok.*;
 import org.springframework.data.annotation.*;
@@ -36,4 +37,11 @@ public class Account {
     private LocalDateTime createdAt;
     @LastModifiedDate
     private LocalDateTime updateAt;
+
+    public void useBalance(Long amount){
+        if (amount > balance){
+            throw new AccountException(ErrorCode.AMOUNT_EXCEED_BALANCE);
+        }
+        balance -= amount;
+    }
 }
