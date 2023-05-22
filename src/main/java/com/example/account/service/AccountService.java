@@ -29,7 +29,9 @@ public class AccountService {
      */
     @Transactional
     public AccountDto createAccount(Long userId, Long initialBalance) {
-        AccountUser accountUser = accountUserRepository.findById(userId).orElseThrow(() -> new AccountException(USER_NOT_FOUND));
+        AccountUser accountUser =
+                accountUserRepository.findById(userId).orElseThrow(
+                        () -> new AccountException(USER_NOT_FOUND));
         // new RuntimeException
         // new IllegalStateException
         // new IllegalArgumentException
